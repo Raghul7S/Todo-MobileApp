@@ -26,7 +26,7 @@ const styles = StyleSheet.create ({
       alignItems: 'center'
     },
     input : {
-      paddingVertica: 15,
+      paddingVertical: 15,
       paddingHorizontal: 15,
       backgroundColor: '#fff',
       borderRadius: 60,
@@ -63,7 +63,8 @@ const styles = StyleSheet.create ({
     itemLeft : {
       flexDirection: 'row',
       alignItems: 'center',
-      flexWrap: 'wrap'
+      flexWrap: 'wrap',
+      flex: 1
     },
     square : {
       height: 24,
@@ -71,20 +72,37 @@ const styles = StyleSheet.create ({
       backgroundColor: '#55bcf6',
       opacity: 0.4,
       borderRadius: 5, 
-      marginRight: 15
+      marginRight: 15,
+      alignItems: 'center',
+      justifyContent: 'center'
     },
     itemText : {
-      maxWidth: '80%',
-      fontFamily: fonts.semiBold
+      flex: 1,
+      fontFamily: fonts.semiBold,
+      marginRight: 5
     },
     circular : {
-      width: 12,
-      height: 12,
+      width: 24,
+      height: 24,
       borderColor: '#55bcf6',
-      borderWidth: 2,
+      borderWidth: 0.5,
       borderRadius: 5,
-      marginTop: 5
-    }
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    icon: {
+      width: 16,
+      height: 16
+    },
+    iconContainer: {
+      flexDirection: 'row',
+      gap: 5
+    },
+    editInput: {
+      flex: 1,
+      fontFamily: fonts.semiBold,
+      color: '#000',
+    },
 });
 
 export default styles;
