@@ -1,8 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { View, Text, KeyboardAvoidingView, Platform, TextInput, TouchableOpacity, Keyboard } from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {
+  View,
+  Text,
+  KeyboardAvoidingView,
+  Platform,
+  TextInput,
+  TouchableOpacity,
+  Keyboard,
+  ScrollView,
+} from 'react-native';
+
 import Task from './Task';
+import {loadTasks, saveTasks} from '../helpers/service';
 import styles from './styles';
-import { loadTasks, saveTasks } from '../helpers/service';
 
 const KeyboardView = () => {
   const [task, setTask] = useState('');
@@ -23,12 +33,12 @@ const KeyboardView = () => {
   const handleAddTask = () => {
     if (task.trim()) {
       Keyboard.dismiss();
-      setTaskItem([...taskItem, { text: task, completed: false }]);
+      setTaskItem([...taskItem, {text: task, completed: false}]);
       setTask('');
     }
   };
 
-  const deleteTask = (index) => {
+  const deleteTask = index => {
     let updatedTasks = [...taskItem];
     updatedTasks.splice(index, 1);
     setTaskItem(updatedTasks);
@@ -50,24 +60,25 @@ const KeyboardView = () => {
     <View style={styles.container}>
       <View style={styles.textWrapper}>
         <Text style={styles.sectionTitle}>Your Task's</Text>
-        <View style={styles.items}>
-          {taskItem.map((item, index) => (
-            <Task
-              key={index}
-              text={item.text}
-              index={index}
-              onDelete={deleteTask}
-              onUpdate={updateTask}
-              onComplete={completeTask}
-            />
-          ))}
-        </View>
+        <ScrollView showsVerticalScrollIndicator={false}>
+          <View style={styles.items}>
+            {taskItem.map((item, index) => (
+              <Task
+                key={index}
+                text={item.text}
+                index={index}
+                onDelete={deleteTask}
+                onUpdate={updateTask}
+                onComplete={completeTask}
+              />
+            ))}
+          </View>
+        </ScrollView>
       </View>
 
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
-        style={styles.textWriteWrapper}
-      >
+        style={styles.textWriteWrapper}>
         <TextInput
           style={styles.input}
           placeholder="Write a task"
