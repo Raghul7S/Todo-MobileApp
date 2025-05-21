@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignContent: 'center',
     justifyContent: 'space-between',
-    marginBottom: 20,
+    marginBottom: 14,
     color: '#000',
   },
   itemLeft: {
@@ -103,6 +103,10 @@ const styles = StyleSheet.create({
     flex: 1,
     fontFamily: fonts.semiBold,
     color: '#000',
+  },
+  dateText: {
+    fontSize: 12,
+    marginBottom: 4,
   },
 });
 

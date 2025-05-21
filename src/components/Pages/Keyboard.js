@@ -67,6 +67,7 @@ const KeyboardView = () => {
                 key={index}
                 text={item.text}
                 index={index}
+                date={Date.now()}
                 onDelete={deleteTask}
                 onUpdate={updateTask}
                 onComplete={completeTask}
