@@ -8,14 +8,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
   textWrapper: {
-    paddingHorizontal: 20,
+    padding: 20,
   },
   sectionTitle: {
     fontSize: 24,
     fontFamily: fonts.bold,
+    borderBottomWidth: 1,
+    borderColor: '#ccc'
   },
   items: {
-    marginTop: 25,
+    marginTop: 16,
     marginBottom: 120,
   },
   textWriteWrapper: {
@@ -107,6 +109,12 @@ const styles = StyleSheet.create({
   dateText: {
     fontSize: 12,
     marginBottom: 4,
+    backgroundColor: "azure",
+    padding: 5,
+    textAlign: 'center',
+    borderRadius: 50,
+    marginHorizontal: 120,
+    elevation: 1
   },
 });
 

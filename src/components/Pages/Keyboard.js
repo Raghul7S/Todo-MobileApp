@@ -33,7 +33,14 @@ const KeyboardView = () => {
   const handleAddTask = () => {
     if (task.trim()) {
       Keyboard.dismiss();
-      setTaskItem([...taskItem, {text: task, completed: false}]);
+      setTaskItem(
+        [...taskItem, 
+          {
+            text: task, 
+            completed: false,
+            createdAt: Date.now(),
+        }]
+      );
       setTask('');
     }
   };
@@ -67,7 +74,7 @@ const KeyboardView = () => {
                 key={index}
                 text={item.text}
                 index={index}
-                date={Date.now()}
+                date={item.createdAt} 
                 onDelete={deleteTask}
                 onUpdate={updateTask}
                 onComplete={completeTask}
