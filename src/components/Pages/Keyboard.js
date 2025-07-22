@@ -90,7 +90,7 @@ const KeyboardView = () => {
         <TextInput
           style={styles.input}
           placeholder="Write a task"
-          placeholderTextColor="#ccc"
+          placeholderTextColor="#B6B09F"
           value={task}
           onChangeText={setTask}
         />

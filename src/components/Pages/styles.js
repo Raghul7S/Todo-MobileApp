@@ -5,28 +5,35 @@ import {fonts} from '../helpers/Utils';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#060417',
   },
   textWrapper: {
-    padding: 20,
+    paddingVertical: 20,
   },
   sectionTitle: {
     fontSize: 24,
+    paddingHorizontal: 15,
     fontFamily: fonts.bold,
     borderBottomWidth: 1,
-    borderColor: '#ccc'
+    borderColor: '#ccc',
+    color: '#fff'
   },
   items: {
     marginTop: 16,
     marginBottom: 120,
   },
   textWriteWrapper: {
-    bottom: 30,
+    bottom: 8,
     position: 'absolute',
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-around',
     alignItems: 'center',
+  },
+  taskContainer: {
+    backgroundColor: '#fffdfdff',
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   input: {
     paddingVertical: 15,
@@ -51,17 +58,15 @@ const styles = StyleSheet.create({
   },
   addText: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: 'bold'
   },
   item: {
-    backgroundColor: '#E8EAED',
-    padding: 15,
-    borderRadius: 16,
+    backgroundColor: '#fffdfdff',
+    padding: 16,
     flexDirection: 'row',
     alignContent: 'center',
     justifyContent: 'space-between',
-    marginBottom: 14,
-    color: '#000',
+    color: '#000'
   },
   itemLeft: {
     flexDirection: 'row',
@@ -69,37 +74,10 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     flex: 1,
   },
-  square: {
-    height: 24,
-    width: 24,
-    backgroundColor: '#55bcf6',
-    opacity: 0.4,
-    borderRadius: 5,
-    marginRight: 15,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
   itemText: {
     flex: 1,
     fontFamily: fonts.semiBold,
     marginRight: 5,
-  },
-  circular: {
-    width: 24,
-    height: 24,
-    borderColor: '#55bcf6',
-    borderWidth: 0.5,
-    borderRadius: 5,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  icon: {
-    width: 16,
-    height: 16,
-  },
-  iconContainer: {
-    flexDirection: 'row',
-    gap: 5,
   },
   editInput: {
     flex: 1,
@@ -108,14 +86,11 @@ const styles = StyleSheet.create({
   },
   dateText: {
     fontSize: 12,
-    marginBottom: 4,
-    backgroundColor: "azure",
-    padding: 5,
-    textAlign: 'center',
-    borderRadius: 50,
-    marginHorizontal: 120,
-    elevation: 1
+    color: '#696969',
   },
+  swipeAction: {
+    
+  }
 });
 
 export default styles;

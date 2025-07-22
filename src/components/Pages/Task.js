@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, TouchableOpacity, Image, TextInput} from 'react-native';
 import dayjs from 'dayjs';
+import {Swipeable} from 'react-native-gesture-handler';
 
 import styles from './styles';
 
@@ -39,15 +40,22 @@ const Task = props => {
 
   const formattedDate = dayjs(date).format('DD/MM/YYYY');
 
+  const renderRightActions = () => (
+    <View style={styles.taskContainer}>
+      <TouchableOpacity onPress={() => onDelete(index)} style={styles.swipeAction}>
+        <Image source={deleteIcon} style={{width: 24, height: 24}} />
+      </TouchableOpacity>
+      <TouchableOpacity onPress={handleEdit} style={styles.swipeAction}>
+        <Image source={editIcon} style={{width: 24, height: 24}} />
+      </TouchableOpacity>
+    </View>
+  );
+
   return (
-    <>
-      <Text style={styles.dateText}>{formattedDate}</Text>
+     <Swipeable renderRightActions={renderRightActions}>
       <View style={styles.item}>
         <View style={styles.itemLeft}>
           <TouchableOpacity onPress={toggleCompletion}>
-            <View style={styles.square}>
-              {isCompleted && <Image source={tickIcon} style={styles.icon} />}
-            </View>
           </TouchableOpacity>
           {isEditing ? (
             <TextInput
@@ -58,32 +66,19 @@ const Task = props => {
               style={styles.editInput}
             />
           ) : (
+            <View style={styles.taskContainer}>
             <Text
               style={styles.itemText}
               numberOfLines={1}
               ellipsizeMode="tail">
               {text}
             </Text>
+            <Text style={styles.dateText}>{formattedDate}</Text>
+            </View>
           )}
-        </View>
-        <View style={styles.iconContainer}>
-          {isEditing ? (
-            <TouchableOpacity onPress={handleSave} style={styles.circular}>
-              <Image source={saveIcon} style={styles.icon} />
-            </TouchableOpacity>
-          ) : (
-            <TouchableOpacity onPress={handleEdit} style={styles.circular}>
-              <Image source={editIcon} style={styles.icon} />
-            </TouchableOpacity>
-          )}
-          <TouchableOpacity
-            onPress={() => onDelete(index)}
-            style={styles.circular}>
-            <Image source={deleteIcon} style={styles.icon} />
-          </TouchableOpacity>
         </View>
       </View>
-    </>
+      </Swipeable>
   );
 };
 
