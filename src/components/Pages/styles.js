@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, StatusBar, Platform} from 'react-native';
 
 import {fonts} from '../helpers/Utils';
 
@@ -6,20 +6,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#060417',
+    padding: 8
   },
   textWrapper: {
-    paddingVertical: 20,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : '',
   },
   sectionTitle: {
     fontSize: 24,
-    paddingHorizontal: 15,
     fontFamily: fonts.bold,
-    borderBottomWidth: 1,
-    borderColor: '#ccc',
+    borderBottomWidth: 0.5,
+    borderColor: '#fff',
     color: '#fff'
   },
   items: {
-    marginTop: 16,
     marginBottom: 120,
   },
   textWriteWrapper: {
@@ -31,9 +30,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   taskContainer: {
-    backgroundColor: '#fffdfdff',
-    flexDirection: 'row',
-    alignItems: 'center'
+    flexDirection: 'row'
   },
   input: {
     paddingVertical: 15,
@@ -61,35 +58,33 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   item: {
-    backgroundColor: '#fffdfdff',
-    padding: 16,
-    flexDirection: 'row',
-    alignContent: 'center',
-    justifyContent: 'space-between',
-    color: '#000'
-  },
-  itemLeft: {
+    paddingVertical: 18,
+    paddingHorizontal: 6,
     flexDirection: 'row',
     alignItems: 'center',
-    flexWrap: 'wrap',
-    flex: 1,
+    justifyContent: 'space-between',
+    color: '#000',
+    borderBottomWidth: 0.5,
+    borderColor: '#fff',
   },
   itemText: {
     flex: 1,
     fontFamily: fonts.semiBold,
     marginRight: 5,
+    color: '#fff'
   },
   editInput: {
     flex: 1,
     fontFamily: fonts.semiBold,
-    color: '#000',
+    color: '#fff'
   },
   dateText: {
     fontSize: 12,
     color: '#696969',
   },
   swipeAction: {
-    
+    paddingHorizontal: 8,
+    justifyContent: 'center'
   }
 });
 

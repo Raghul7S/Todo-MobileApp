@@ -42,21 +42,26 @@ const Task = props => {
 
   const renderRightActions = () => (
     <View style={styles.taskContainer}>
-      <TouchableOpacity onPress={() => onDelete(index)} style={styles.swipeAction}>
-        <Image source={deleteIcon} style={{width: 24, height: 24}} />
+      <TouchableOpacity onPress={() => onDelete(index)} style={[styles.swipeAction, {backgroundColor: 'red'}]}>
+        <Image source={deleteIcon} style={{width: 18, height: 18}} />
       </TouchableOpacity>
-      <TouchableOpacity onPress={handleEdit} style={styles.swipeAction}>
-        <Image source={editIcon} style={{width: 24, height: 24}} />
+      <TouchableOpacity onPress={handleEdit} style={[styles.swipeAction, {backgroundColor: 'blue'}]}>
+        <Image source={editIcon} style={{width: 18, height: 18}} />
       </TouchableOpacity>
     </View>
   );
 
+  const renderLeftActions = () => (
+    <View style={styles.taskContainer}>
+      <TouchableOpacity onPress={() => onDelete(index)} style={[styles.swipeAction, {backgroundColor: 'red'}]}>
+        <Image source={tickIcon} style={{width: 18, height: 18}} />
+      </TouchableOpacity>
+    </View>
+  )
+
   return (
-     <Swipeable renderRightActions={renderRightActions}>
+     <Swipeable overshootRight={false} overshootLeft={false} renderLeftActions={renderLeftActions} renderRightActions={renderRightActions}>
       <View style={styles.item}>
-        <View style={styles.itemLeft}>
-          <TouchableOpacity onPress={toggleCompletion}>
-          </TouchableOpacity>
           {isEditing ? (
             <TextInput
               value={editText}
@@ -76,7 +81,6 @@ const Task = props => {
             <Text style={styles.dateText}>{formattedDate}</Text>
             </View>
           )}
-        </View>
       </View>
       </Swipeable>
   );
