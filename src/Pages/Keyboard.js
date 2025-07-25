@@ -10,8 +10,10 @@ import {
   ScrollView,
 } from 'react-native';
 
+import {loadTasks, saveTasks} from '../components/helpers/service';
+
 import Task from './Task';
-import {loadTasks, saveTasks} from '../helpers/service';
+import Container from '../components/Container';
 import styles from './styles';
 
 const KeyboardView = () => {
@@ -64,9 +66,7 @@ const KeyboardView = () => {
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.textWrapper}>
-        <Text style={styles.sectionTitle}>Your Task's</Text>
+    <Container>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.items}>
             {taskItem.map((item, index) => (
@@ -82,8 +82,6 @@ const KeyboardView = () => {
             ))}
           </View>
         </ScrollView>
-      </View>
-
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.textWriteWrapper}>
@@ -100,7 +98,7 @@ const KeyboardView = () => {
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
-    </View>
+    </Container>
   );
 };
 

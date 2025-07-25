@@ -1,14 +1,16 @@
 import React from 'react';
-import {View} from 'react-native';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
 
-import KeyboardView from './src/components/Pages/Keyboard';
+import KeyboardView from './src/Pages/Keyboard';
 
 const App = () => {
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
-      <KeyboardView />
-    </GestureHandlerRootView>
+    <SafeAreaProvider>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <KeyboardView />
+      </GestureHandlerRootView>
+    </SafeAreaProvider>
   );
 };
 

@@ -1,33 +1,18 @@
-import {StyleSheet, StatusBar, Platform} from 'react-native';
+import {StyleSheet} from 'react-native';
 
-import {fonts} from '../helpers/Utils';
+import { fonts } from '../components/helpers/Utils';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#060417',
-    padding: 8
-  },
-  textWrapper: {
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : '',
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontFamily: fonts.bold,
-    borderBottomWidth: 0.5,
-    borderColor: '#fff',
-    color: '#fff'
-  },
   items: {
-    marginBottom: 120,
+    marginBottom: 100,
   },
   textWriteWrapper: {
     bottom: 8,
     position: 'absolute',
-    width: '100%',
+    width: '110%',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    alignItems: 'center',
+    alignItems: 'center'
   },
   taskContainer: {
     flexDirection: 'row'
@@ -64,12 +49,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     color: '#000',
-    borderBottomWidth: 0.5,
+    borderBottomWidth: 1,
     borderColor: '#fff',
   },
   itemText: {
     flex: 1,
     fontFamily: fonts.semiBold,
+    fontSize: 15,
     marginRight: 5,
     color: '#fff'
   },
@@ -83,7 +69,8 @@ const styles = StyleSheet.create({
     color: '#696969',
   },
   swipeAction: {
-    paddingHorizontal: 8,
+    width: 40,
+    alignItems: 'center',
     justifyContent: 'center'
   }
 });

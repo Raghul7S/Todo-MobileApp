@@ -1,14 +1,11 @@
 import React, {useState} from 'react';
-import {View, Text, TouchableOpacity, Image, TextInput} from 'react-native';
+import {View, Text, TouchableOpacity, TextInput} from 'react-native';
 import dayjs from 'dayjs';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import FeatherIcon from 'react-native-vector-icons/Feather'
 import {Swipeable} from 'react-native-gesture-handler';
 
 import styles from './styles';
-
-const tickIcon = require('../assets/images/check-mark.png');
-const saveIcon = require('../assets/images/bookmark.png');
-const editIcon = require('../assets/images/edit.png');
-const deleteIcon = require('../assets/images/delete.png');
 
 const Task = props => {
   const {text, onUpdate, index, onComplete, onDelete, date} = props;
@@ -43,10 +40,10 @@ const Task = props => {
   const renderRightActions = () => (
     <View style={styles.taskContainer}>
       <TouchableOpacity onPress={() => onDelete(index)} style={[styles.swipeAction, {backgroundColor: 'red'}]}>
-        <Image source={deleteIcon} style={{width: 18, height: 18}} />
+        <FeatherIcon name='trash' size={22} color="#fff" />
       </TouchableOpacity>
       <TouchableOpacity onPress={handleEdit} style={[styles.swipeAction, {backgroundColor: 'blue'}]}>
-        <Image source={editIcon} style={{width: 18, height: 18}} />
+        <Icon name='edit' size={22} color="#fff" />
       </TouchableOpacity>
     </View>
   );
@@ -54,13 +51,19 @@ const Task = props => {
   const renderLeftActions = () => (
     <View style={styles.taskContainer}>
       <TouchableOpacity onPress={() => onDelete(index)} style={[styles.swipeAction, {backgroundColor: 'red'}]}>
-        <Image source={tickIcon} style={{width: 18, height: 18}} />
+        <Icon name="done" size={22} color="#fff" />
       </TouchableOpacity>
     </View>
   )
 
   return (
-     <Swipeable overshootRight={false} overshootLeft={false} renderLeftActions={renderLeftActions} renderRightActions={renderRightActions}>
+     <Swipeable 
+     overshootRight={false} 
+     overshootLeft={false} 
+     renderLeftActions={renderLeftActions} 
+     renderRightActions={renderRightActions}
+     friction={2}
+     >
       <View style={styles.item}>
           {isEditing ? (
             <TextInput
@@ -75,7 +78,8 @@ const Task = props => {
             <Text
               style={styles.itemText}
               numberOfLines={1}
-              ellipsizeMode="tail">
+              ellipsizeMode="tail"
+            >
               {text}
             </Text>
             <Text style={styles.dateText}>{formattedDate}</Text>
