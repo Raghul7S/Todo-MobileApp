@@ -7,7 +7,7 @@ import {
   TextInput,
   TouchableOpacity,
   Keyboard,
-  ScrollView,
+  FlatList,
 } from 'react-native';
 
 import {loadTasks, saveTasks} from '../components/helpers/service';
@@ -65,23 +65,27 @@ const KeyboardView = () => {
     setTaskItem(updatedTasks);
   };
 
+  const renderItem = ({item, index}) => (
+    <Task
+      text={item.text}
+      index={index}
+      date={item.createdAt}
+      onDelete={deleteTask}
+      onUpdate={updateTask}
+      onComplete={completeTask}
+    />
+  );
+
   return (
     <Container>
-        <ScrollView showsVerticalScrollIndicator={false}>
-          <View style={styles.items}>
-            {taskItem.map((item, index) => (
-              <Task
-                key={index}
-                text={item.text}
-                index={index}
-                date={item.createdAt} 
-                onDelete={deleteTask}
-                onUpdate={updateTask}
-                onComplete={completeTask}
-              />
-            ))}
-          </View>
-        </ScrollView>
+      <View style={styles.items}>
+        <FlatList
+          data={taskItem}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={renderItem}
+          showsVerticalScrollIndicator={false}
+        />
+      </View>
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.textWriteWrapper}>

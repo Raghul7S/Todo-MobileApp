@@ -40,10 +40,10 @@ const Task = props => {
   const renderRightActions = () => (
     <View style={styles.taskContainer}>
       <TouchableOpacity onPress={() => onDelete(index)} style={[styles.swipeAction, {backgroundColor: 'red'}]}>
-        <FeatherIcon name='trash' size={22} color="#fff" />
+        <FeatherIcon name='edit' size={22} color="#fff" />
       </TouchableOpacity>
       <TouchableOpacity onPress={handleEdit} style={[styles.swipeAction, {backgroundColor: 'blue'}]}>
-        <Icon name='edit' size={22} color="#fff" />
+        <Icon name='done' size={22} color="#fff" />
       </TouchableOpacity>
     </View>
   );
@@ -51,18 +51,21 @@ const Task = props => {
   const renderLeftActions = () => (
     <View style={styles.taskContainer}>
       <TouchableOpacity onPress={() => onDelete(index)} style={[styles.swipeAction, {backgroundColor: 'red'}]}>
-        <Icon name="done" size={22} color="#fff" />
+        <FeatherIcon name="trash" size={22} color="#fff" />
       </TouchableOpacity>
     </View>
   )
 
   return (
      <Swipeable 
-     overshootRight={false} 
-     overshootLeft={false} 
-     renderLeftActions={renderLeftActions} 
-     renderRightActions={renderRightActions}
-     friction={2}
+      overshootRight={false} 
+      rightThreshold={40}
+      leftThreshold={40}
+      overshootLeft={false} 
+      renderLeftActions={renderLeftActions} 
+      renderRightActions={renderRightActions}
+      friction={2}
+      onSwipeableLeftOpen={()=>onDelete()}
      >
       <View style={styles.item}>
           {isEditing ? (
